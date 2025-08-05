@@ -1,0 +1,12 @@
+﻿@model List<TreeappChinmay.Models.TreeNode>
+
+@{
+    ViewData["Title"] = "Tree View";
+}
+
+<h2>Tree View</h2>
+
+<ul>
+    @await Html.PartialAsync("_TreePartial", Model)
+
+</ul>

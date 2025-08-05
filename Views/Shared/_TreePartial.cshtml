@@ -1,0 +1,20 @@
+﻿@model IEnumerable<TreeappChinmay.Models.TreeNode>
+
+@foreach (var node in Model)
+{
+    <li>
+        @node.NodeName
+        @{
+            var children = ((List<TreeappChinmay.Models.TreeNode>)ViewBag.AllNodes)
+            .Where(n => n.ParentNodeId == node.NodeId)
+            .ToList();
+
+            if (children.Any())
+            {
+                <ul>
+                    @await Html.PartialAsync("_TreePartial", children)
+                </ul>
+            }
+        }
+    </li>
+}
